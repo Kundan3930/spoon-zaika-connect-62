@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,6 +64,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +88,89 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0'
+					},
+					'100%': {
+						opacity: '1'
+					}
+				},
+				'fade-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'fade-down': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(-10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-left': {
+					'0%': {
+						transform: 'translateX(100%)'
+					},
+					'100%': {
+						transform: 'translateX(0)'
+					}
+				},
+				'slide-right': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(0)'
+					}
+				},
+				'scale-up': {
+					'0%': {
+						transform: 'scale(0.95)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'scale(1)',
+						opacity: '1'
+					}
+				},
+				'carousel': {
+					'0%, 20%': {
+						transform: 'translateX(0)'
+					},
+					'25%, 45%': {
+						transform: 'translateX(-100%)'
+					},
+					'50%, 70%': {
+						transform: 'translateX(-200%)'
+					},
+					'75%, 95%': {
+						transform: 'translateX(-300%)'
+					},
+					'100%': {
+						transform: 'translateX(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'fade-up': 'fade-up 0.5s ease-out',
+				'fade-down': 'fade-down 0.5s ease-out',
+				'slide-left': 'slide-left 0.5s ease-out',
+				'slide-right': 'slide-right 0.5s ease-out',
+				'scale-up': 'scale-up 0.5s ease-out',
+				'carousel': 'carousel 16s infinite'
 			}
 		}
 	},
