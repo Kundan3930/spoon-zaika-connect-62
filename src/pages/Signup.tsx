@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,18 +8,36 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('user');
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleUserSignup = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const firstName = formData.get('first-name') as string;
+    const lastName = formData.get('last-name') as string;
+    const email = formData.get('email') as string;
+    
     // Simulate API call
     setTimeout(() => {
+      const userData = {
+        id: crypto.randomUUID(),
+        name: `${firstName} ${lastName}`,
+        email: email,
+        role: 'user' as const
+      };
+      
+      login(userData); // Log the user in automatically
       toast.success('Account created successfully!');
+      navigate('/profile'); // Redirect to profile page
       setIsLoading(false);
     }, 1500);
   };
@@ -28,9 +46,23 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const restaurantName = formData.get('restaurant-name') as string;
+    const email = formData.get('admin-email') as string;
+    
+    // Simulate API call - but now log in the admin immediately without approval
     setTimeout(() => {
-      toast.success('Admin account created successfully! Awaiting approval.');
+      const adminData = {
+        id: crypto.randomUUID(),
+        name: restaurantName,
+        email: email,
+        role: 'admin' as const
+      };
+      
+      login(adminData); // Log the admin in automatically
+      toast.success('Admin account created successfully!');
+      navigate('/admin'); // Redirect to admin dashboard
       setIsLoading(false);
     }, 1500);
   };
@@ -40,7 +72,16 @@ const Signup = () => {
     
     // Simulate API call
     setTimeout(() => {
+      const userData = {
+        id: crypto.randomUUID(),
+        name: 'Google User',
+        email: 'googleuser@example.com',
+        role: 'user' as const
+      };
+      
+      login(userData); // Log the user in automatically
       toast.success('Account created successfully with Google');
+      navigate('/profile'); // Redirect to profile page
       setIsLoading(false);
     }, 1500);
   };
@@ -75,27 +116,27 @@ const Signup = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="first-name">First Name</Label>
-                    <Input id="first-name" required />
+                    <Input id="first-name" name="first-name" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" required />
+                    <Input id="last-name" name="last-name" required />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" required />
+                  <Input id="email" name="email" type="email" placeholder="you@example.com" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" required />
+                  <Input id="password" name="password" type="password" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="confirm-password">Confirm Password</Label>
-                  <Input id="confirm-password" type="password" required />
+                  <Input id="confirm-password" name="confirm-password" type="password" required />
                 </div>
                 
                 <div className="flex items-center space-x-2">
@@ -160,32 +201,32 @@ const Signup = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="restaurant-name">Restaurant Name</Label>
-                    <Input id="restaurant-name" required />
+                    <Input id="restaurant-name" name="restaurant-name" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="restaurant-id">Restaurant ID</Label>
-                    <Input id="restaurant-id" required />
+                    <Input id="restaurant-id" name="restaurant-id" required />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="admin-email">Admin Email</Label>
-                  <Input id="admin-email" type="email" placeholder="admin@example.com" required />
+                  <Input id="admin-email" name="admin-email" type="email" placeholder="admin@example.com" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="admin-phone">Phone Number</Label>
-                  <Input id="admin-phone" type="tel" required />
+                  <Input id="admin-phone" name="admin-phone" type="tel" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="admin-password">Password</Label>
-                  <Input id="admin-password" type="password" required />
+                  <Input id="admin-password" name="admin-password" type="password" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="admin-confirm-password">Confirm Password</Label>
-                  <Input id="admin-confirm-password" type="password" required />
+                  <Input id="admin-confirm-password" name="admin-confirm-password" type="password" required />
                 </div>
                 
                 <div className="flex items-center space-x-2">
