@@ -2,11 +2,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Home, Menu, X } from "lucide-react";
+import { Home, Menu, X, User } from "lucide-react";
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, isAdmin, user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,9 +62,24 @@ const Navbar = () => {
           <Link to="/about" className="text-gray-800 hover:text-blue-500 transition-colors font-medium">
             About
           </Link>
-          <Link to="/login">
-            <Button variant="outline" className="btn-hover">Sign In</Button>
-          </Link>
+          
+          {isAuthenticated ? (
+            <div className="flex items-center space-x-4">
+              <Link to={isAdmin ? "/admin" : "/profile"}>
+                <Button variant="outline" className="btn-hover flex items-center gap-2">
+                  <User size={16} />
+                  {isAdmin ? 'Dashboard' : 'My Account'}
+                </Button>
+              </Link>
+              <Button variant="ghost" className="btn-hover" onClick={logout}>
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <Link to="/login">
+              <Button variant="outline" className="btn-hover">Sign In</Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -96,9 +113,24 @@ const Navbar = () => {
             <Link to="/about" className="text-gray-800 hover:text-blue-500 transition-colors font-medium p-2">
               About
             </Link>
-            <Link to="/login">
-              <Button className="w-full">Sign In</Button>
-            </Link>
+            
+            {isAuthenticated ? (
+              <>
+                <Link to={isAdmin ? "/admin" : "/profile"} className="p-2">
+                  <Button className="w-full flex items-center justify-center gap-2">
+                    <User size={16} />
+                    {isAdmin ? 'Dashboard' : 'My Account'}
+                  </Button>
+                </Link>
+                <Button variant="outline" className="w-full" onClick={logout}>
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button className="w-full">Sign In</Button>
+              </Link>
+            )}
           </div>
         </div>
       )}

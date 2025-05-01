@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,18 +8,35 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('user');
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleUserLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get('email') as string;
+    
+    // In a real app, you would validate credentials against a database
+    // For demo purposes, we're simulating successful login
     setTimeout(() => {
+      const userData = {
+        id: '1',
+        name: 'User',
+        email: email,
+        role: 'user' as const
+      };
+      
+      login(userData);
       toast.success('Successfully logged in as User');
+      navigate('/profile');
       setIsLoading(false);
     }, 1500);
   };
@@ -28,9 +45,22 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get('admin-email') as string;
+    
+    // For demo purposes, we're simulating successful admin login
     setTimeout(() => {
+      const userData = {
+        id: 'admin1',
+        name: 'Admin',
+        email: email,
+        role: 'admin' as const
+      };
+      
+      login(userData);
       toast.success('Successfully logged in as Admin');
+      navigate('/admin');
       setIsLoading(false);
     }, 1500);
   };
@@ -38,9 +68,18 @@ const Login = () => {
   const handleGoogleLogin = () => {
     setIsLoading(true);
     
-    // Simulate API call
+    // Simulate Google login
     setTimeout(() => {
+      const userData = {
+        id: 'google1',
+        name: 'Google User',
+        email: 'googleuser@example.com',
+        role: 'user' as const
+      };
+      
+      login(userData);
       toast.success('Successfully logged in with Google');
+      navigate('/profile');
       setIsLoading(false);
     }, 1500);
   };
@@ -74,7 +113,7 @@ const Login = () => {
               <form onSubmit={handleUserLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="you@example.com" required />
+                  <Input id="email" name="email" type="email" placeholder="you@example.com" required />
                 </div>
                 
                 <div className="space-y-2">
@@ -139,7 +178,7 @@ const Login = () => {
               <form onSubmit={handleAdminLogin} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="admin-email">Admin Email</Label>
-                  <Input id="admin-email" type="email" placeholder="admin@example.com" required />
+                  <Input id="admin-email" name="admin-email" type="email" placeholder="admin@example.com" required />
                 </div>
                 
                 <div className="space-y-2">
