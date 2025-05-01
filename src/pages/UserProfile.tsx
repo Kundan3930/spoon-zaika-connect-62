@@ -17,10 +17,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Mock data for demonstration
 const mockOrders = [
-  { id: '001', restaurant: 'Spoon', items: 'Classic Burger x 2', status: 'Delivered', date: '2023-05-01', total: '$15.98' },
-  { id: '002', restaurant: 'Zaika', items: 'Butter Chicken x 1, Naan x 2', status: 'Preparing', date: '2023-05-03', total: '$22.50' },
-  { id: '003', restaurant: 'Spoon', items: 'Caesar Salad x 1', status: 'Ready', date: '2023-05-05', total: '$8.99' },
-  { id: '004', restaurant: 'Zaika', items: 'Chicken Biryani x 1', status: 'Delivered', date: '2023-05-07', total: '$14.50' },
+  { id: '001', restaurant: 'Spoon', items: 'Classic Burger x 2', status: 'Delivered', date: '2023-05-01', total: '₹70' },
+  { id: '002', restaurant: 'Zaika', items: 'Butter Chicken x 1, Naan x 2', status: 'Preparing', date: '2023-05-03', total: '₹170' },
+  { id: '003', restaurant: 'Spoon', items: 'Caesar Salad x 1', status: 'Ready', date: '2023-05-05', total: '₹60' },
+  { id: '004', restaurant: 'Zaika', items: 'Chicken Biryani x 1', status: 'Delivered', date: '2023-05-07', total: '₹120' },
 ];
 
 const UserProfile = () => {

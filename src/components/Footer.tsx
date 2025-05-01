@@ -54,15 +54,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="mr-2 h-5 w-5 text-blue-500" />
-                <span className="text-gray-400">123 University Avenue, Campus Square, Building 4</span>
+                <span className="text-gray-400">Cafetaria compound, near D Block, Campus Square</span>
               </li>
               <li className="flex items-center">
                 <Phone className="mr-2 h-5 w-5 text-blue-500" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+91 8295 6569 29</span>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 text-blue-500" />
-                <span className="text-gray-400">info@quickbite.edu</span>
+                <span className="text-gray-400">quickbite@geetauniversity.edu.in</span>
               </li>
             </ul>
           </div>
@@ -73,7 +73,7 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} QuickBite. All rights reserved.
           </p>
           <p className="text-gray-600 text-sm mt-2">
-            Made with ❤️ for university students
+            Made with ❤️ CodeAlchemy
           </p>
         </div>
       </div>

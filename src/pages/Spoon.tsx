@@ -10,56 +10,56 @@ const spoonMenuItems: Omit<FoodItemProps, 'restaurantName'>[] = [
     id: 'spoon-1',
     name: 'Classic Burger',
     description: 'Juicy beef patty with lettuce, tomato, cheese and our special sauce',
-    price: 8.99,
+    price: 70,
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-2',
     name: 'Caesar Salad',
     description: 'Fresh romaine lettuce, croutons, parmesan cheese with creamy caesar dressing',
-    price: 6.99,
+    price: 80,
     image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-3',
     name: 'Margherita Pizza',
     description: 'Classic pizza with tomato sauce, fresh mozzarella and basil',
-    price: 10.99,
+    price: 120,
     image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-4',
     name: 'Grilled Chicken Sandwich',
     description: 'Grilled chicken breast with avocado, bacon, lettuce and honey mustard',
-    price: 9.99,
+    price: 70,
     image: 'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-5',
     name: 'Pasta Primavera',
     description: 'Pasta with seasonal vegetables in a light cream sauce',
-    price: 11.99,
+    price: 80,
     image: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-6',
     name: 'French Fries',
     description: 'Crispy golden fries with your choice of dipping sauce',
-    price: 3.99,
+    price: 70,
     image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'spoon-7',
     name: 'Chocolate Brownie',
     description: 'Rich chocolate brownie with vanilla ice cream',
-    price: 5.99,
-    image: 'https://images.unsplash.com/photo-1564355808539-22fda35a3d9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    price: 50,
+    image: 'https://images2.alphacoders.com/917/917724.jpg'
   },
   {
     id: 'spoon-8',
     name: 'Iced Coffee',
     description: 'Cold brew coffee with your choice of milk and flavor',
-    price: 4.49,
+    price: 90,
     image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   }
 ];
@@ -135,28 +135,28 @@ const Spoon = () => {
                   <h3 className="text-lg font-semibold mb-4">Opening Hours</h3>
                   <ul className="space-y-2">
                     <li className="flex justify-between">
-                      <span>Monday - Friday</span>
-                      <span>7:30 AM - 9:00 PM</span>
+                      <span>Tuesday - Saturday</span>
+                      <span>9:20 AM - 9:00 PM</span>
                     </li>
                     <li className="flex justify-between">
-                      <span>Saturday</span>
-                      <span>8:00 AM - 8:00 PM</span>
+                      <span>Monday</span>
+                      <span>10:00 AM - 8:00 PM</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Sunday</span>
-                      <span>9:00 AM - 7:00 PM</span>
+                      <span>Closed!</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div>
                   <h3 className="text-lg font-semibold mb-4">Location</h3>
-                  <p className="mb-2">Student Union Building, North Wing</p>
+                  <p className="mb-2">Near D block, Campus west side</p>
                   <p className="text-gray-600">Campus Map Reference: SU-101</p>
                   
                   <h3 className="text-lg font-semibold mt-6 mb-4">Contact</h3>
-                  <p className="mb-2">Phone: (555) 123-4567</p>
-                  <p className="text-gray-600">Email: spoon@campus.edu</p>
+                  <p className="mb-2">Phone: +91 8295 6569 29</p>
+                  <p className="text-gray-600">Email: spoon@geetauniversity.edu.in</p>
                 </div>
               </div>
             </div>

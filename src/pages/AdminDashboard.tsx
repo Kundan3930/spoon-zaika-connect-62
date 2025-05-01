@@ -24,30 +24,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // Mock data for demonstration
 const initialOrders = [
-  { id: '001', customer: 'John Doe', restaurant: 'Spoon', items: 'Classic Burger x 2', status: 'Pending', date: '2023-05-01', total: '$15.98' },
-  { id: '002', customer: 'Alice Smith', restaurant: 'Zaika', items: 'Butter Chicken x 1, Naan x 2', status: 'Preparing', date: '2023-05-03', total: '$22.50' },
-  { id: '003', customer: 'Bob Johnson', restaurant: 'Spoon', items: 'Caesar Salad x 1', status: 'Ready', date: '2023-05-05', total: '$8.99' },
-  { id: '004', customer: 'Eva Brown', restaurant: 'Zaika', items: 'Chicken Biryani x 1', status: 'Delivered', date: '2023-05-07', total: '$14.50' },
-  { id: '005', customer: 'Michael Lee', restaurant: 'Spoon', items: 'Fries x 2, Soda x 1', status: 'Pending', date: '2023-05-08', total: '$9.99' },
+  { id: '001', customer: 'Kundan Patel', restaurant: 'Spoon', items: 'Classic Burger x 2', status: 'Pending', date: '2023-05-01', total: '₹140' },
+  { id: '002', customer: 'Aashish Yadav', restaurant: 'Zaika', items: 'Butter Chicken x 1, Naan x 2', status: 'Preparing', date: '2023-05-03', total: '₹140' },
+  { id: '003', customer: 'Virat', restaurant: 'Spoon', items: 'Caesar Salad x 1', status: 'Ready', date: '2023-05-05', total: '₹60' },
+  { id: '004', customer: 'Suresh Yadav', restaurant: 'Zaika', items: 'Chicken Biryani x 1', status: 'Delivered', date: '2023-05-07', total: '₹170' },
+  { id: '005', customer: 'Arshit Raj', restaurant: 'Spoon', items: 'Fries x 2, Soda x 1', status: 'Pending', date: '2023-05-08', total: '₹160' },
 ];
 
 // Mock menu data
 const initialMenuItems = [
-  { id: '001', name: 'Classic Burger', restaurant: 'Spoon', price: '$7.99', available: true },
-  { id: '002', name: 'Caesar Salad', restaurant: 'Spoon', price: '$8.99', available: true },
-  { id: '003', name: 'Fries', restaurant: 'Spoon', price: '$3.99', available: true },
-  { id: '004', name: 'Butter Chicken', restaurant: 'Zaika', price: '$12.50', available: true },
-  { id: '005', name: 'Chicken Biryani', restaurant: 'Zaika', price: '$14.50', available: true },
-  { id: '006', name: 'Naan', restaurant: 'Zaika', price: '$2.50', available: true },
+  { id: '001', name: 'Classic Burger', restaurant: 'Spoon', price: '₹70', available: true },
+  { id: '002', name: 'Caesar Salad', restaurant: 'Spoon', price: '₹60', available: true },
+  { id: '003', name: 'Fries', restaurant: 'Spoon', price: '70₹', available: true },
+  { id: '004', name: 'Butter Chicken', restaurant: 'Zaika', price: '₹120', available: true },
+  { id: '005', name: 'Chicken Biryani', restaurant: 'Zaika', price: '₹170', available: true },
+  { id: '006', name: 'Naan', restaurant: 'Zaika', price: '₹60', available: true },
 ];
 
 // Mock users data
 const initialUsers = [
-  { id: '001', name: 'John Doe', email: 'john@example.com', orders: 5, lastOrder: '2023-05-01' },
-  { id: '002', name: 'Alice Smith', email: 'alice@example.com', orders: 3, lastOrder: '2023-05-03' },
-  { id: '003', name: 'Bob Johnson', email: 'bob@example.com', orders: 2, lastOrder: '2023-05-05' },
-  { id: '004', name: 'Eva Brown', email: 'eva@example.com', orders: 1, lastOrder: '2023-05-07' },
-  { id: '005', name: 'Michael Lee', email: 'michael@example.com', orders: 6, lastOrder: '2023-05-08' },
+  { id: '001', name: 'kundan', email: 'kundan@example.com', orders: 5, lastOrder: '2023-05-01' },
+  { id: '002', name: 'Arshit', email: 'arshit@example.com', orders: 3, lastOrder: '2023-05-03' },
+  { id: '003', name: 'Suresh', email: 'suresh@example.com', orders: 2, lastOrder: '2023-05-05' },
+  { id: '004', name: 'Aashish', email: 'aashish@example.com', orders: 1, lastOrder: '2023-05-07' },
+  { id: '005', name: 'Murad', email: 'murad@example.com', orders: 6, lastOrder: '2023-05-08' },
 ];
 
 const AdminDashboard = () => {
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
       id: (Math.random() * 1000).toFixed(0).padStart(3, '0'),
       name: newMenuItem.name,
       restaurant: restaurantType as string,
-      price: newMenuItem.price.startsWith('$') ? newMenuItem.price : `$${newMenuItem.price}`,
+      price: newMenuItem.price.startsWith('₹') ? newMenuItem.price : `${newMenuItem.price}`,
       available: newMenuItem.available
     };
     
