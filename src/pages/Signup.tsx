@@ -9,10 +9,18 @@ import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue, 
+} from '@/components/ui/select';
 
 const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('user');
+  const [selectedRestaurant, setSelectedRestaurant] = useState<string>('spoon');
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -57,7 +65,8 @@ const Signup = () => {
         id: crypto.randomUUID(),
         name: restaurantName,
         email: email,
-        role: 'admin' as const
+        role: 'admin' as const,
+        restaurant: selectedRestaurant as 'spoon' | 'zaika' // Add restaurant type
       };
       
       login(adminData); // Log the admin in automatically
@@ -201,11 +210,19 @@ const Signup = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="restaurant-name">Restaurant Name</Label>
-                    <Input id="restaurant-name" name="restaurant-name" required />
+                    <Input id="restaurant-name" name="restaurant-name" defaultValue={selectedRestaurant === 'spoon' ? 'Spoon' : 'Zaika'} readOnly />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="restaurant-id">Restaurant ID</Label>
-                    <Input id="restaurant-id" name="restaurant-id" required />
+                    <Label htmlFor="restaurant-type">Restaurant Type</Label>
+                    <Select value={selectedRestaurant} onValueChange={setSelectedRestaurant}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select restaurant" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="spoon">Spoon</SelectItem>
+                        <SelectItem value="zaika">Zaika</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
                 
